@@ -18,5 +18,7 @@ module.exports = {
 		tsconfigRootDir: __dirname,
 	},
 	plugins: ['react'],
-	rules: {},
+	rules: {
+		'@typescript-eslint/consistent-type-definitions': ['error', 'type'],
+	},
 };
