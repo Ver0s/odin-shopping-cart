@@ -8,6 +8,8 @@ module.exports = {
 		'plugin:@typescript-eslint/recommended',
 		'plugin:@typescript-eslint/recommended-requiring-type-checking',
 		'standard-with-typescript',
+		'plugin:testing-library/react',
+		'plugin:jest-dom/recommended',
 		'prettier',
 	],
 	overrides: [],
@@ -17,7 +19,7 @@ module.exports = {
 		project: ['./tsconfig.json'],
 		tsconfigRootDir: __dirname,
 	},
-	plugins: ['react'],
+	plugins: ['react', 'testing-library', 'jest-dom'],
 	rules: {
 		'@typescript-eslint/consistent-type-definitions': ['error', 'type'],
 	},
