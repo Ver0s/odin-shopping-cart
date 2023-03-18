@@ -1,16 +1,30 @@
-import React from 'react';
-import { Outlet } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Outlet, useOutletContext } from 'react-router-dom';
 import Header from './components/Header';
 // import Footer from './components/Footer';
 
-function Layout(): JSX.Element {
+type CartType = {
+	productId: number;
+	quantity: number;
+};
+
+type ContextType = {
+	cart: CartType;
+	setCart: React.Dispatch<React.SetStateAction<CartType[]>>;
+};
+
+export default function Layout() {
+	const [cart, setCart] = useState<CartType[]>([]);
+
 	return (
 		<>
 			<Header />
-			<Outlet />
+			<Outlet context={{ cart, setCart }} />
 			{/* <Footer /> */}
 		</>
 	);
 }
 
-export default Layout;
+export function useCart() {
+	return useOutletContext<ContextType>();
+}
