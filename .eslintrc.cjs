@@ -22,5 +22,6 @@ module.exports = {
 	plugins: ['react', 'testing-library', 'jest-dom'],
 	rules: {
 		'@typescript-eslint/consistent-type-definitions': ['error', 'type'],
+		'@typescript-eslint/explicit-function-return-type': 'off',
 	},
 };
