@@ -1,8 +1,7 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import useFakeStore from '../hooks/useFakeStore';
 import type { Product } from '../types';
-import { Link } from 'react-router-dom';
 
 export default function ProductDetails() {
 	const { productId } = useParams();
