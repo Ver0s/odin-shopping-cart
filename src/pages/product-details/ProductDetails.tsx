@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
-import useFakeStore from '../hooks/useFakeStore';
-import type { Product } from '../types';
+import useFakeStore from '../../hooks/useFakeStore';
+import type { Product } from '../../types';
 
 export default function ProductDetails() {
 	const { productId } = useParams();
@@ -49,6 +49,7 @@ export default function ProductDetails() {
 				</div>
 			</Link>
 			<br />
+			<img src={data.image} alt={data.title} className="h-48" />
 			{data.title}
 		</div>
 	);

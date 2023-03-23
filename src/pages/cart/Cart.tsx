@@ -1,7 +1,7 @@
 import React from 'react';
-import { useCart } from '../Layout';
-import useFakeStore from '../hooks/useFakeStore';
-import type { Product } from '../types';
+import { useCart } from '../../Layout';
+import useFakeStore from '../../hooks/useFakeStore';
+import type { Product } from '../../types';
 
 export default function Cart() {
 	const { data, status } = useFakeStore<Product[]>(

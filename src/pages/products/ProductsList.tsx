@@ -1,9 +1,9 @@
 import React from 'react';
 import ProductCard from './ProductCard';
 import SkeletonCard from './SkeletonCard';
-import useFakeStore from '../hooks/useFakeStore';
-import { useCart } from '../Layout';
-import type { Product } from '../types';
+import useFakeStore from '../../hooks/useFakeStore';
+import { useCart } from '../../Layout';
+import type { Product } from '../../types';
 
 export default function ProductsList() {
 	const { data, status } = useFakeStore<Product[]>(
