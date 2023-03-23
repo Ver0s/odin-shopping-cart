@@ -11,21 +11,22 @@ import './index.css';
 const router = createBrowserRouter([
 	{
 		element: <Layout />,
+		path: '/',
 		children: [
 			{
-				path: '/',
+				index: true,
 				element: <Home />,
 			},
 			{
-				path: '/products',
+				path: 'products',
 				element: <Products />,
 			},
 			{
-				path: '/products/:productId',
+				path: 'products/:productId',
 				element: <ProductDetails />,
 			},
 			{
-				path: '/cart',
+				path: 'cart',
 				element: <Cart />,
 			},
 		],
