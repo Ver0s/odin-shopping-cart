@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import Layout from './Layout';
-import Home from './pages/Home';
-import Products from './pages/Products';
-import Cart from './pages/Cart';
-import ProductDetails from './pages/ProductDetails';
+import Home from './pages/home/Home';
+import Products from './pages/products/Products';
+import Cart from './pages/cart/Cart';
+import ProductDetails from './pages/product-details/ProductDetails';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './index.css';
 
