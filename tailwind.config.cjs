@@ -4,7 +4,8 @@ module.exports = {
 	theme: {
 		extend: {
 			gridTemplateColumns: {
-				fluid: 'repeat(auto-fit, minmax(12rem, 1fr))',
+			fontFamily: {
+				kumbhSans: "'Kumbh Sans', sans-serif",
 			},
 		},
 	},
