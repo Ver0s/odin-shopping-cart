@@ -1,8 +1,13 @@
 import React from 'react';
 import { Outlet, useOutletContext } from 'react-router-dom';
-import Header from './components/Header';
-import useLocalStorage from './hooks/useLocalStorage';
+import Header from './Header';
+import useLocalStorage from '../hooks/useLocalStorage';
 // import Footer from './components/Footer';
+
+// TODO
+// 2. Create proper details page
+// 3. Setup filtering with cards
+// 4. Make the website more attractive, take inspiration from frontend mentor project
 
 type CartType = {
 	productId: number;
@@ -44,7 +49,9 @@ export default function Layout() {
 	return (
 		<>
 			<Header totalProducts={totalProducts} />
-			<Outlet context={{ cart, setCart, handleAddToCart }} />
+			<main>
+				<Outlet context={{ cart, setCart, handleAddToCart }} />
+			</main>
 			{/* <Footer /> */}
 		</>
 	);
