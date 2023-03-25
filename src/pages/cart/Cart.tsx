@@ -1,41 +1,63 @@
 import React from 'react';
-import { useCart } from '../../Layout';
+import { useCart } from '../../components/Layout';
 import useFakeStore from '../../hooks/useFakeStore';
 import type { Product } from '../../types';
+import CartProduct from './CartProduct';
+import { Link } from 'react-router-dom';
+import Spinner from '../../components/Spinner';
+
+// TODO:
+// Add divider to each item as a border at the bottom
+// Add total price of items and checkout link
 
 export default function Cart() {
 	const { data, status } = useFakeStore<Product[]>(
 		'https://fakestoreapi.com/products',
 		[]
 	);
-	const { cart, setCart } = useCart();
+	const { cart, handleClearCart } = useCart();
+
+	if (status === 'error') return <span>Something went wrong</span>;
+
+	if (status === 'loading') return <Spinner />;
+
+	if (cart.length === 0) {
+		return (
+			<>
+				<span>Your cart is currently empty.</span>
+				<Link to={'/products'}>Start shopping now!</Link>
+			</>
+		);
+	}
 
 	const cartProducts = data
 		.filter((product) => cart.some((item) => item.productId === product.id))
 		.map((product) => ({
 			...product,
-			quantity: cart.find((item) => item.productId === product.id)
-				?.quantity,
+			quantity:
+				cart.find((item) => item.productId === product.id)?.quantity ??
+				1,
 		}));
 
-	if (status === 'loading') return <span>loading...</span>;
-
 	return (
-		<>
-			{cartProducts.map((product) => (
-				<div key={product.id}>
-					<span>
-						{product.title} {product.quantity}
-					</span>
-				</div>
-			))}
-			<button
-				onClick={() => {
-					setCart([]);
-				}}
-			>
-				Clear Cart
-			</button>
-		</>
+		<div className="px-4 py-4 xl:px-0">
+			<div className="mb-4 flex items-center justify-between">
+				<h1 className="text-xl font-bold">Your cart</h1>
+				<button onClick={handleClearCart}>Clear Cart</button>
+			</div>
+			<ul className="space-y-4">
+				{cartProducts.map((product) => (
+					<li key={product.id}>
+						<CartProduct
+							id={product.id}
+							title={product.title}
+							price={product.price}
+							image={product.image}
+							initialQuantity={product.quantity}
+						/>
+					</li>
+				))}
+			</ul>
+		</div>
 	);
 }
