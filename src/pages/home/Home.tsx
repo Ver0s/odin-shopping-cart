@@ -4,10 +4,11 @@ import { Link } from 'react-router-dom';
 export default function Home(): JSX.Element {
 	return (
 		<>
-			<h1>Some catchy text</h1>
+			<h1>The one stop shop for all your needs</h1>
 			<p>
-				Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsa,
-				quod!
+				Looking for some clothes, or maybe a new monitor? We&apos;ve got
+				you covered, <span className="font-bold">everything</span> is
+				here.
 			</p>
 			<Link to={'/products'}>Shop now</Link>
 		</>
