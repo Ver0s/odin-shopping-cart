@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import Layout from './Layout';
+import Layout from './components/Layout';
 import Home from './pages/home/Home';
 import Products from './pages/products/Products';
 import Cart from './pages/cart/Cart';
