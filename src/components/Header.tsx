@@ -1,32 +1,43 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 type HeaderProps = {
 	totalProducts: number;
 };
-
+// https://reactrouter.com/en/main/components/nav-link
 export default function Header({ totalProducts }: HeaderProps) {
 	return (
-		<header className="sticky top-0 z-50 bg-slate-400 p-4">
-			<div className="mx-auto flex max-w-screen-xl justify-between">
-				<span>Logo</span>
+		<header className="sticky top-0 z-50 bg-white">
+			<div className="mx-auto flex max-w-screen-xl items-center justify-between border-b border-gray-200 py-6 px-4 xl:px-0">
+				<NavLink to={'/'} className="text-2xl font-bold">
+					everything.
+				</NavLink>
 				<nav>
 					<ul className="flex items-center gap-4">
 						<li>
-							<Link to={'/'}>Home</Link>
+							<NavLink
+								to={'/products'}
+								className={({ isActive }) =>
+									isActive ? 'stroke-2 font-bold' : ''
+								}
+							>
+								Products
+							</NavLink>
 						</li>
 						<li>
-							<Link to={'/products'}>Products</Link>
-						</li>
-						<li>
-							<Link to={'/cart'}>
+							<NavLink
+								to={'/cart'}
+								className={({ isActive }) =>
+									isActive
+										? 'relative stroke-2 font-bold'
+										: 'relative'
+								}
+							>
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
-									className="icon icon-tabler icon-tabler-shopping-bag inline-block"
 									width="24"
 									height="24"
 									viewBox="0 0 24 24"
-									strokeWidth="2"
 									stroke="currentColor"
 									fill="none"
 									strokeLinecap="round"
@@ -37,11 +48,17 @@ export default function Header({ totalProducts }: HeaderProps) {
 										d="M0 0h24v24H0z"
 										fill="none"
 									></path>
-									<path d="M6.331 8h11.339a2 2 0 0 1 1.977 2.304l-1.255 8.152a3 3 0 0 1 -2.966 2.544h-6.852a3 3 0 0 1 -2.965 -2.544l-1.255 -8.152a2 2 0 0 1 1.977 -2.304z"></path>
-									<path d="M9 11v-5a3 3 0 0 1 6 0v5"></path>
+									<path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+									<path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+									<path d="M17 17h-11v-14h-2"></path>
+									<path d="M6 5l14 1l-1 7h-13"></path>
 								</svg>
-								<span>{totalProducts}</span>
-							</Link>
+								{totalProducts > 0 && (
+									<div className="absolute -right-2 -top-2 flex h-4 w-4 items-center justify-center rounded-full bg-orange-500 text-xs font-bold text-gray-100">
+										{totalProducts}
+									</div>
+								)}
+							</NavLink>
 						</li>
 					</ul>
 				</nav>
