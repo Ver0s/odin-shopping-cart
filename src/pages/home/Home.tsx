@@ -10,7 +10,6 @@ export default function Home(): JSX.Element {
 				you covered, <span className="font-bold">everything</span> is
 				here.
 			</p>
-			<Link to={'/products'}>Shop now</Link>
-		</>
+			<img src={homeImg} className="hidden max-w-lg lg:block" />
 	);
 }
