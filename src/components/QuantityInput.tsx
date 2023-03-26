@@ -2,21 +2,15 @@ import React from 'react';
 
 type QuantityInputProps = {
 	quantity: number;
-	onQuantityDecrement: () => void;
-	onQuantityIncrement: () => void;
-	onQuantityChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-	onCartQuantityUpdate?: () => void;
+	setQuantity: React.Dispatch<React.SetStateAction<number>>;
+	updateCartQuantity?: (nextQuantity: number) => void;
 	size?: 'sm' | 'lg';
 };
-// TODO:
-// 1. Handle onblur event, I want input to be set to 1 when out of focus
-// 2. Handle restricting user from inputting decimals into input
+
 export default function QuantityInput({
 	quantity,
-	onQuantityDecrement,
-	onQuantityIncrement,
-	onQuantityChange,
-	onCartQuantityUpdate = null,
+	setQuantity,
+	updateCartQuantity,
 	size = 'lg',
 }: QuantityInputProps) {
 	const sizes = {
@@ -40,14 +34,19 @@ export default function QuantityInput({
 		<div className={containerClassName}>
 			<button
 				className={`${buttonClassName} rounded-l-lg`}
-				onClick={onQuantityDecrement}
+				onClick={() => {
+					const nextQuantity = quantity - 1;
+					setQuantity(nextQuantity);
+					if (updateCartQuantity !== undefined) {
+						updateCartQuantity(nextQuantity);
+					}
+				}}
 				disabled={quantity <= 1}
 			>
 				-
 			</button>
 			<input
 				type="number"
-				// className="min-w-0 flex-1 bg-slate-100 py-3 text-center"
 				className={inputClassName}
 				value={
 					!isNaN(quantity) && quantity !== null && quantity !== 0
@@ -56,22 +55,29 @@ export default function QuantityInput({
 				}
 				min={1}
 				step={1}
-				onChange={onQuantityChange}
-				// TODO:
-				// Prevent from inputting 0 at the beginning
-				onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
-					if (e.key === ',' || e.key === '.') {
-						e.preventDefault();
-					}
+				onChange={(e) => {
+					setQuantity(parseInt(e.target.value));
 				}}
-				// TODO:
-				// Onblur should alway cause quantity to go back to 1
-				// I can maybe pass state setter as props here
-				onBlur={onCartQuantityUpdate}
+				onBlur={() => {
+					let nextQuantity = quantity;
+					if (isNaN(nextQuantity)) {
+						nextQuantity = 1;
+					}
+					if (updateCartQuantity !== undefined) {
+						updateCartQuantity(nextQuantity);
+					}
+					setQuantity(nextQuantity);
+				}}
 			/>
 			<button
 				className={`${buttonClassName} rounded-r-lg`}
-				onClick={onQuantityIncrement}
+				onClick={() => {
+					const nextQuantity = quantity + 1;
+					setQuantity(nextQuantity);
+					if (updateCartQuantity !== undefined) {
+						updateCartQuantity(nextQuantity);
+					}
+				}}
 			>
 				+
 			</button>
