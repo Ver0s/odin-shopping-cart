@@ -40,6 +40,11 @@ export default function Cart() {
 				1,
 		}));
 
+	const totalPrice = cartProducts.reduce(
+		(total, currentProduct) =>
+			total + currentProduct.price * currentProduct.quantity,
+		0
+	);
 	return (
 		<div className="px-4 py-4 xl:px-0">
 			<div className="mb-4 flex items-center justify-between">
