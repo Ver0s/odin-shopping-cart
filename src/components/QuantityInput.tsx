@@ -1,6 +1,6 @@
 import React from 'react';
 
-type QuantityInputProps = {
+type quantityInputProps = {
 	quantity: number;
 	setQuantity: React.Dispatch<React.SetStateAction<number>>;
 	updateCartQuantity?: (nextQuantity: number) => void;
@@ -12,11 +12,11 @@ export default function QuantityInput({
 	setQuantity,
 	updateCartQuantity,
 	size = 'lg',
-}: QuantityInputProps) {
+}: quantityInputProps) {
 	const sizes = {
 		sm: {
 			px: '3',
-			py: '1',
+			py: '1.5',
 			maxWidth: 'max-w-[120px]',
 		},
 		lg: {
@@ -26,7 +26,7 @@ export default function QuantityInput({
 		},
 	};
 
-	const buttonClassName = `bg-slate-100 px-${sizes[size].px} py-${sizes[size].py} text-orange-500 hover:bg-slate-200 disabled:text-gray-300 disabled:hover:bg-slate-100`;
+	const buttonClassName = `bg-slate-100 px-${sizes[size].px} py-${sizes[size].py} text-indigo-700 hover:bg-slate-200 disabled:text-gray-300 disabled:hover:bg-slate-100 transition-colors`;
 	const inputClassName = `w-full bg-slate-100 py-${sizes[size].py} text-center`;
 	const containerClassName = `flex ${sizes[size].maxWidth} items-center font-bold`;
 
