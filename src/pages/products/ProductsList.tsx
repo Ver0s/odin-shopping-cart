@@ -2,7 +2,7 @@ import React from 'react';
 import ProductCard from './ProductCard';
 import SkeletonCard from './SkeletonCard';
 import useFakeStore from '../../hooks/useFakeStore';
-import { useCart } from '../../Layout';
+import { useCart } from '../../components/Layout';
 import type { Product } from '../../types';
 
 export default function ProductsList() {
@@ -28,8 +28,7 @@ export default function ProductsList() {
 	if (data === null) return <p>Products not found</p>;
 
 	return (
-		<div className="mx-auto grid max-w-screen-xl grid-cols-fluid gap-4 p-4 xl:px-0">
-			{/* maybe pass the whole product here, I think it will be more flexible */}
+		<div className="mx-auto grid max-w-screen-xl grid-cols-fluid gap-4 p-4 sm:gap-8 xl:px-0">
 			{data.map((product) => (
 				<ProductCard
 					key={product.id}
@@ -37,6 +36,7 @@ export default function ProductsList() {
 					title={product.title}
 					price={product.price}
 					image={product.image}
+					rating={product.rating}
 					onAddToCart={handleAddToCart}
 				/>
 			))}
