@@ -23,5 +23,6 @@ module.exports = {
 	rules: {
 		'@typescript-eslint/consistent-type-definitions': ['error', 'type'],
 		'@typescript-eslint/explicit-function-return-type': 'off',
+		'react/react-in-jsx-scope': 'off',
 	},
 };
