@@ -11,15 +11,16 @@ import Spinner from '../../components/Spinner';
 // Add total price of items and checkout link
 
 export default function Cart() {
-	const { data, status } = useFakeStore<Product[]>(
-		'https://fakestoreapi.com/products',
-		[]
+	const { data, isLoading, error } = useFakeStore<Product[]>(
+		'https://fakestoreapi.com/products'
 	);
 	const { cart, handleClearCart } = useCart();
 
-	if (status === 'error') return <span>Something went wrong</span>;
+	if (error !== '') return <p>Something went wrong: {error}</p>;
 
-	if (status === 'loading') return <Spinner />;
+	if (isLoading) return <Spinner />;
+
+	if (data === null) return <p>Cart products not found</p>;
 
 	if (cart.length === 0) {
 		return (

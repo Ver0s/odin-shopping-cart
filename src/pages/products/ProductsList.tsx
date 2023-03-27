@@ -6,13 +6,12 @@ import { useCart } from '../../Layout';
 import type { Product } from '../../types';
 
 export default function ProductsList() {
-	const { data, status } = useFakeStore<Product[]>(
-		'https://fakestoreapi.com/products',
-		[]
+	const { data, isLoading, error } = useFakeStore<Product[]>(
+		'https://fakestoreapi.com/products'
 	);
 	const { handleAddToCart } = useCart();
 
-	if (status === 'loading') {
+	if (isLoading) {
 		return (
 			<div className="mx-auto grid max-w-screen-xl grid-cols-fluid gap-4 p-4 xl:px-0">
 				{Array(20)
@@ -24,13 +23,9 @@ export default function ProductsList() {
 		);
 	}
 
-	if (status === 'error') {
-		return (
-			<span className="text-xl font-bold text-red-600">
-				Failed to fetch products
-			</span>
-		);
-	}
+	if (error !== '') return <p>Something went wrong: {error}</p>;
+
+	if (data === null) return <p>Products not found</p>;
 
 	return (
 		<div className="mx-auto grid max-w-screen-xl grid-cols-fluid gap-4 p-4 xl:px-0">

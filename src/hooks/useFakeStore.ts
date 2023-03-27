@@ -1,24 +1,31 @@
 import { useState, useEffect } from 'react';
 
-export default function useFakeStore<T>(url: string, initialValue: T) {
-	const [data, setData] = useState<T>(initialValue);
-	const [status, setStatus] = useState<'loading' | 'error' | 'success'>(
-		'loading'
-	);
+function getErrorMessage(error: unknown) {
+	if (error instanceof Error) return error.message;
+	return String(error);
+}
+
+export default function useFakeStore<T>(url: string) {
+	const [data, setData] = useState<T | null>(null);
+	const [isLoading, setIsLoading] = useState(false);
+	const [error, setError] = useState<string>('');
 
 	async function fetchData() {
+		setIsLoading(true);
 		try {
 			const response = await fetch(url);
 			if (!response.ok) {
-				setStatus('error');
+				// response.statusText is not showing for some reason
+				setError(String(response.status));
 				return;
 			}
 			const data = (await response.json()) as T;
 			setData(data);
-			setStatus('success');
 		} catch (err) {
 			console.error(err);
-			setStatus('error');
+			setError(getErrorMessage(err));
+		} finally {
+			setIsLoading(false);
 		}
 	}
 
@@ -26,5 +33,5 @@ export default function useFakeStore<T>(url: string, initialValue: T) {
 		void fetchData();
 	}, []);
 
-	return { data, status };
+	return { data, isLoading, error };
 }

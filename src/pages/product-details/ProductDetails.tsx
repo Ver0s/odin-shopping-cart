@@ -13,26 +13,16 @@ import Spinner from '../../components/Spinner';
 export default function ProductDetails() {
 	const { productId } = useParams();
 	const [quantity, setQuantity] = useState(1);
-	const { data, status } = useFakeStore<Product>(
-		`https://fakestoreapi.com/products/${productId}`,
-		null
+	const { data, isLoading, error } = useFakeStore<Product>(
+		`https://fakestoreapi.com/products/${productId}`
 	);
 	const { handleAddToCart } = useCart();
 
-	function handleQuantityDecrement() {
-		setQuantity(quantity - 1);
-	}
+	if (isLoading) return <Spinner />;
 
-	function handleQuantityIncrement() {
-		setQuantity(quantity + 1);
-	}
+	if (error !== '') return <p>Something went wrong: {error}</p>;
 
-	// FIXME:
-	// When parseInt is used and input is cleared the app bugs
-	// But when Number is used the user can copy and paste decimal number
-	function handleQuantityChange(e: React.ChangeEvent<HTMLInputElement>) {
-		setQuantity(parseInt(e.target.value));
-	}
+	if (data === null) return <p>No such product found</p>;
 
 	if (status === 'loading') return <Spinner />;
 
