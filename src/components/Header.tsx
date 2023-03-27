@@ -4,10 +4,10 @@ import { NavLink } from 'react-router-dom';
 type HeaderProps = {
 	totalProducts: number;
 };
-// https://reactrouter.com/en/main/components/nav-link
+
 export default function Header({ totalProducts }: HeaderProps) {
 	return (
-		<header className="sticky top-0 z-50 bg-white">
+		<header className="fixed z-50 w-full bg-white">
 			<div className="mx-auto flex max-w-screen-xl items-center justify-between border-b border-gray-200 py-6 px-4 xl:px-0">
 				<NavLink to={'/'} className="text-2xl font-bold">
 					everything.
@@ -54,7 +54,7 @@ export default function Header({ totalProducts }: HeaderProps) {
 									<path d="M6 5l14 1l-1 7h-13"></path>
 								</svg>
 								{totalProducts > 0 && (
-									<div className="absolute -right-2 -top-2 flex h-4 w-4 items-center justify-center rounded-full bg-orange-500 text-xs font-bold text-gray-100">
+									<div className="absolute -right-2 -top-2 flex h-4 w-4 items-center justify-center rounded-full bg-indigo-700 text-xs font-bold text-white">
 										{totalProducts}
 									</div>
 								)}
