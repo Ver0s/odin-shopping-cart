@@ -11,27 +11,29 @@ export default function QuantityInput({
 	updateCartQuantity,
 	size = 'lg',
 }: quantityInputProps) {
-	const sizes = {
+	const styles = {
 		sm: {
-			px: '3',
-			py: '1.5',
-			maxWidth: 'max-w-[120px]',
+			buttonRight:
+				'bg-slate-100 px-3 py-1.5 text-indigo-700 hover:bg-slate-200 disabled:text-gray-300 disabled:hover:bg-slate-100 transition-colors rounded-r-lg',
+			buttonLeft:
+				'bg-slate-100 px-3 py-1.5 text-indigo-700 hover:bg-slate-200 disabled:text-gray-300 disabled:hover:bg-slate-100 transition-colors rounded-l-lg',
+			input: 'w-full bg-slate-100 py-1.5 text-center',
+			container: 'flex max-w-[120px] items-center font-bold',
 		},
 		lg: {
-			px: '5',
-			py: '3',
-			maxWidth: '',
+			buttonRight:
+				'bg-slate-100 px-5 py-3 text-indigo-700 hover:bg-slate-200 disabled:text-gray-300 disabled:hover:bg-slate-100 transition-colors rounded-r-lg',
+			buttonLeft:
+				'bg-slate-100 px-5 py-3 text-indigo-700 hover:bg-slate-200 disabled:text-gray-300 disabled:hover:bg-slate-100 transition-colors rounded-l-lg',
+			input: 'w-full bg-slate-100 py-3 text-center',
+			container: 'flex items-center font-bold',
 		},
 	};
 
-	const buttonClassName = `bg-slate-100 px-${sizes[size].px} py-${sizes[size].py} text-indigo-700 hover:bg-slate-200 disabled:text-gray-300 disabled:hover:bg-slate-100 transition-colors`;
-	const inputClassName = `w-full bg-slate-100 py-${sizes[size].py} text-center`;
-	const containerClassName = `flex ${sizes[size].maxWidth} items-center font-bold`;
-
 	return (
-		<div className={containerClassName}>
+		<div className={styles[size].container}>
 			<button
-				className={`${buttonClassName} rounded-l-lg`}
+				className={styles[size].buttonLeft}
 				onClick={() => {
 					const nextQuantity = quantity - 1;
 					setQuantity(nextQuantity);
@@ -45,7 +47,7 @@ export default function QuantityInput({
 			</button>
 			<input
 				type="number"
-				className={inputClassName}
+				className={styles[size].input}
 				value={
 					!isNaN(quantity) && quantity !== null && quantity !== 0
 						? quantity
@@ -68,7 +70,7 @@ export default function QuantityInput({
 				}}
 			/>
 			<button
-				className={`${buttonClassName} rounded-r-lg`}
+				className={styles[size].buttonRight}
 				onClick={() => {
 					const nextQuantity = quantity + 1;
 					setQuantity(nextQuantity);
