@@ -1,5 +1,3 @@
-import React from 'react';
-
 type quantityInputProps = {
 	quantity: number;
 	setQuantity: React.Dispatch<React.SetStateAction<number>>;
