@@ -6,10 +6,6 @@ import { useCart } from '../../components/Layout';
 import type { Product } from '../../types';
 import Spinner from '../../components/Spinner';
 
-// TODO:
-// Make the card full width, put both buttons to change quantity and add to cart at the bottom with flex or margin auto
-// Make photos sizes more unified
-
 export default function ProductDetails() {
 	const { productId } = useParams();
 	const [quantity, setQuantity] = useState(1);
@@ -24,18 +20,8 @@ export default function ProductDetails() {
 
 	if (data === null) return <p>No such product found</p>;
 
-	if (status === 'loading') return <Spinner />;
-
-	if (status === 'error') {
-		return (
-			<span className="text-xl font-bold text-red-600">
-				Failed to fetch product details
-			</span>
-		);
-	}
-
 	return (
-		<div className="p-4">
+		<div className="mx-auto max-w-6xl p-4 md:py-14 xl:px-0">
 			<Link to=".." relative="path">
 				<div className="flex gap-1">
 					<svg
@@ -62,15 +48,18 @@ export default function ProductDetails() {
 					Back to all products
 				</div>
 			</Link>
-			<div className="flex flex-col sm:flex-row">
-				<img
-					src={data.image}
-					alt={data.title}
-					className="mx-auto h-72 object-contain p-4"
-				/>
-				{/* I feel like the spacing is a bit too big */}
-				<div className="space-y-4">
-					<h1 className="text-xl font-bold">{data.title}</h1>
+			<div className="flex flex-col sm:mt-4 sm:items-center md:flex-row md:gap-8">
+				<div className="flex-1 p-4">
+					<img
+						src={data.image}
+						alt={data.title}
+						className="mx-auto h-72 object-contain md:h-96"
+					/>
+				</div>
+				<div className="flex-1 space-y-4">
+					<h1 className="text-xl font-bold sm:text-2xl">
+						{data.title}
+					</h1>
 					<p className="text-slate-500">{data.description}</p>
 					<div className="flex items-center justify-between">
 						<h2 className="text-xl font-bold">{data.price}$</h2>
@@ -95,14 +84,14 @@ export default function ProductDetails() {
 						</div>
 					</div>
 					<div className="flex flex-col gap-4 md:flex-row">
-						<QuantityInput
-							quantity={quantity}
-							onQuantityDecrement={handleQuantityDecrement}
-							onQuantityIncrement={handleQuantityIncrement}
-							onQuantityChange={handleQuantityChange}
-						/>
+						<div className="flex-[1]">
+							<QuantityInput
+								quantity={quantity}
+								setQuantity={setQuantity}
+							/>
+						</div>
 						<button
-							className="rounded-lg bg-orange-500 py-3 font-bold text-white"
+							className="flex-[2] rounded-lg bg-indigo-700 py-3 font-bold text-white"
 							onClick={() => {
 								handleAddToCart(Number(productId), quantity);
 							}}
