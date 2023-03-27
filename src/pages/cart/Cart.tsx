@@ -24,10 +24,15 @@ export default function Cart() {
 
 	if (cart.length === 0) {
 		return (
-			<>
-				<span>Your cart is currently empty.</span>
-				<Link to={'/products'}>Start shopping now!</Link>
-			</>
+			<div className="mt-4 text-center xl:mt-8">
+				<p className="mb-4 text-lg">Your cart is currently empty.</p>
+				<Link
+					to={'/products'}
+					className="inline-block self-start rounded-lg bg-orange-500 py-3 px-6 text-center font-bold text-white"
+				>
+					Start shopping now
+				</Link>
+			</div>
 		);
 	}
 
