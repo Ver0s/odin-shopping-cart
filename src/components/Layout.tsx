@@ -2,15 +2,13 @@ import React from 'react';
 import { Outlet, useOutletContext } from 'react-router-dom';
 import Header from './Header';
 import useLocalStorage from '../hooks/useLocalStorage';
-// import Footer from './Footer';
+import Footer from './Footer';
 
 // TODO:
-// 2. Create proper details page
-// 3. Setup filtering with cards
-// 4. Make the website more attractive, take inspiration from frontend mentor project
-// 5. Make footer stick to bottom
-// https://stackoverflow.com/questions/74144034/why-is-the-css-height100vh-rule-exceeding-the-viewport-height-on-mobile-device
-// https://dev.to/nehalahmadkhan/how-to-make-footer-stick-to-bottom-of-web-page-3i14
+// 1. Setup filtering with cards
+// 2. Make custom components for buttons and links
+// 3. Think if I want to implement a search bar
+// 4. Make product details page responsive
 
 type CartType = {
 	productId: number;
@@ -77,10 +75,7 @@ export default function Layout() {
 	return (
 		<>
 			<Header totalProducts={totalProducts} />
-			{/* TODO: */}
-			{/* I think I don't want to impose a certain max width globally on every element below */}
-			{/* !!!Instead I should set it on every child separately!!! */}
-			<main className="mx-auto max-w-screen-xl">
+			<main className="flex-grow pt-[81px]">
 				<Outlet
 					context={{
 						cart,
@@ -92,7 +87,7 @@ export default function Layout() {
 					}}
 				/>
 			</main>
-			{/* <Footer /> */}
+			<Footer />
 		</>
 	);
 }
