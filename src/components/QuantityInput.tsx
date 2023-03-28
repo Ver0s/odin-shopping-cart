@@ -13,18 +13,12 @@ export default function QuantityInput({
 }: quantityInputProps) {
 	const styles = {
 		sm: {
-			buttonRight:
-				'bg-slate-100 px-3 py-1.5 text-indigo-700 hover:bg-slate-200 disabled:text-gray-300 disabled:hover:bg-slate-100 transition-colors rounded-r-lg',
-			buttonLeft:
-				'bg-slate-100 px-3 py-1.5 text-indigo-700 hover:bg-slate-200 disabled:text-gray-300 disabled:hover:bg-slate-100 transition-colors rounded-l-lg',
+			button: 'bg-slate-100 px-3 py-1.5 text-indigo-700 hover:bg-slate-200 disabled:text-gray-300 disabled:hover:bg-slate-100 transition-colors',
 			input: 'w-full bg-slate-100 py-1.5 text-center',
 			container: 'flex max-w-[120px] items-center font-bold',
 		},
 		lg: {
-			buttonRight:
-				'bg-slate-100 px-5 py-3 text-indigo-700 hover:bg-slate-200 disabled:text-gray-300 disabled:hover:bg-slate-100 transition-colors rounded-r-lg',
-			buttonLeft:
-				'bg-slate-100 px-5 py-3 text-indigo-700 hover:bg-slate-200 disabled:text-gray-300 disabled:hover:bg-slate-100 transition-colors rounded-l-lg',
+			button: 'bg-slate-100 px-5 py-3 text-indigo-700 hover:bg-slate-200 disabled:text-gray-300 disabled:hover:bg-slate-100 transition-colors',
 			input: 'w-full bg-slate-100 py-3 text-center',
 			container: 'flex items-center font-bold',
 		},
@@ -33,7 +27,7 @@ export default function QuantityInput({
 	return (
 		<div className={styles[size].container}>
 			<button
-				className={styles[size].buttonLeft}
+				className={`${styles[size].button} rounded-l-lg`}
 				onClick={() => {
 					const nextQuantity = quantity - 1;
 					setQuantity(nextQuantity);
@@ -70,7 +64,7 @@ export default function QuantityInput({
 				}}
 			/>
 			<button
-				className={styles[size].buttonRight}
+				className={`${styles[size].button} rounded-r-lg`}
 				onClick={() => {
 					const nextQuantity = quantity + 1;
 					setQuantity(nextQuantity);
