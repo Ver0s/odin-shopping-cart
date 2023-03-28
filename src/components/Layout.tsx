@@ -4,12 +4,6 @@ import Header from './Header';
 import useLocalStorage from '../hooks/useLocalStorage';
 import Footer from './Footer';
 
-// TODO:
-// 1. Setup filtering with cards
-// 2. Make custom components for buttons and links
-// 3. Think if I want to implement a search bar
-// 4. Make product details page responsive
-
 type CartType = {
 	productId: number;
 	quantity: number;
