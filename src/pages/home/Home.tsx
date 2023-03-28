@@ -19,7 +19,7 @@ export default function Home(): JSX.Element {
 				</p>
 				<Link
 					to={'/products'}
-					className="inline-block self-start rounded-lg bg-indigo-700 py-3 px-6 text-center font-bold text-white"
+					className="inline-block self-start rounded-lg bg-indigo-700 py-3 px-6 text-center font-bold text-white transition-colors hover:bg-indigo-900"
 				>
 					Shop now
 				</Link>

@@ -91,7 +91,7 @@ export default function ProductDetails() {
 							/>
 						</div>
 						<button
-							className="flex-[2] rounded-lg bg-indigo-700 py-3 font-bold text-white"
+							className="flex-[2] rounded-lg bg-indigo-700 py-3 font-bold text-white transition-colors hover:bg-indigo-900"
 							onClick={() => {
 								handleAddToCart(Number(productId), quantity);
 							}}
