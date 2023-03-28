@@ -26,8 +26,8 @@ export default function ProductCard({
 						alt={title}
 						className="mx-auto h-44 w-40 object-contain"
 					/>
+					<h2 className="mt-4 mb-2 font-bold">{title}</h2>
 				</Link>
-				<h2 className="mt-4 mb-2 font-bold text-gray-800">{title}</h2>
 				<div className="flex items-center">
 					<svg
 						aria-hidden="true"
@@ -47,7 +47,7 @@ export default function ProductCard({
 			<div className="flex items-center justify-between">
 				<p className="text-lg font-semibold text-gray-700">{price}$</p>
 				<button
-					className="rounded-md bg-indigo-700 px-3 py-2 text-white hover:bg-indigo-900"
+					className="rounded-md bg-indigo-700 px-3 py-2 text-white transition-colors hover:bg-indigo-900"
 					onClick={() => {
 						onAddToCart(id);
 					}}

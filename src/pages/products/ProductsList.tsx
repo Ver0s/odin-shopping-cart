@@ -28,7 +28,7 @@ export default function ProductsList() {
 	if (data === null) return <p>Products not found</p>;
 
 	return (
-		<div className="mx-auto grid max-w-screen-xl grid-cols-fluid gap-4 p-4 sm:gap-8 xl:px-0">
+		<div className="mx-auto grid max-w-screen-xl grid-cols-fluid gap-4 p-4 sm:gap-8 xl:py-8 xl:px-0">
 			{data.map((product) => (
 				<ProductCard
 					key={product.id}
