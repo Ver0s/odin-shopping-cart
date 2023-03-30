@@ -15,7 +15,6 @@ export default function useFakeStore<T>(url: string) {
 		try {
 			const response = await fetch(url);
 			if (!response.ok) {
-				// response.statusText is not showing for some reason
 				setError(String(response.status));
 				return;
 			}
