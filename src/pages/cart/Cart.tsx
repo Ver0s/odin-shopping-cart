@@ -1,4 +1,3 @@
-import React from 'react';
 import { useCart } from '../../components/Layout';
 import useFakeStore from '../../hooks/useFakeStore';
 import type { Product } from '../../types';

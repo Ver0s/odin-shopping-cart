@@ -1,5 +1,3 @@
-import React from 'react';
-
 export default function Footer(): JSX.Element {
 	return (
 		<footer className="mx-auto w-full max-w-screen-xl border-t border-gray-200 py-4 text-center">

@@ -1,4 +1,3 @@
-import React from 'react';
 import { Outlet, useOutletContext } from 'react-router-dom';
 import Header from './Header';
 import useLocalStorage from '../hooks/useLocalStorage';

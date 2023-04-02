@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useCart } from '../../components/Layout';
 import QuantityInput from '../../components/QuantityInput';
 import { Link } from 'react-router-dom';
