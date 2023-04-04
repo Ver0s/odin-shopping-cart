@@ -25,7 +25,7 @@ export default function Cart() {
 					to={'/products'}
 					className="inline-block self-start rounded-lg bg-indigo-700 py-3 px-6 text-center font-bold text-white transition-colors hover:bg-indigo-900"
 				>
-					Start shopping now
+					Shop now
 				</Link>
 			</div>
 		);
