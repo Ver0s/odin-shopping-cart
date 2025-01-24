@@ -6,23 +6,23 @@ With this project I wanted to experiment and play around with data fetching in R
 
 ### Features:
 
-- You can browse products, add them to cart, delete from cart and fine tune the quantity
-- Cart data is persisted in local storage
-- Made with responsive design in mind
-- Custom hook for data fetching with error handling
+-   You can browse products, add them to cart, delete from cart and fine tune the quantity
+-   Cart data is persisted in local storage
+-   Made with responsive design in mind
+-   Custom hook for data fetching with error handling
 
 ### Things that I plan to work on. Both in this specific project and as a whole:
 
-- **Testing:** I will try to add some meaningful tests to the project but honestly I'll admit that it's the part where I struggle the most. And especially in terms of frontend tests. The bigger the project the more you have to mock external libraries or APIs or do integration testing to see how several components work with each other.
-- **Code reausability:** I'll have to add more reusable components for buttons, links etc. Tailwind is great but with it I can't just style every link at once with one selector.Well, theoretically I can but it would go against it's principles so I'll have to embrace components.
-- **Git workflow:** In this project I tried my best to write meaningful git messages with the help of conventional commits prefixes. I think I did pretty good but I still need to work on my understanding of merge conflicts etc.
-- **CSS:** I really tried to make this project as responsive as I could. Right now it's in a pretty good state but could always use some work.
+-   **Testing:** I will try to add some meaningful tests to the project but honestly I'll admit that it's the part where I struggle the most. And especially in terms of frontend tests. The bigger the project the more you have to mock external libraries or APIs or do integration testing to see how several components work with each other.
+-   **Code reausability:** I'll have to add more reusable components for buttons, links etc. Tailwind is great but with it I can't just style every link at once with one selector.Well, theoretically I can but it would go against it's principles so I'll have to embrace components.
+-   **Git workflow:** In this project I tried my best to write meaningful git messages with the help of conventional commits prefixes. I think I did pretty good but I still need to work on my understanding of merge conflicts etc.
+-   **CSS:** I really tried to make this project as responsive as I could. Right now it's in a pretty good state but could always use some work.
 
 ### Technologies used:
 
-- React
-- Typescript
-- React Router
-- Tailwind
-- Vite
-- FakeStore API (In the future I should pick my APIs more carefully since I wanted to implement a search bar with debouncing that calls that API for a specific product. Sadly the API doesn't let me search through it with a specific search parameter)
+-   React
+-   Typescript
+-   React Router
+-   Tailwind
+-   Vite
+-   FakeStore API (In the future I should pick my APIs more carefully since I wanted to implement a search bar with debouncing that calls that API for a specific product. Sadly the API doesn't let me search through it with a specific search parameter)
